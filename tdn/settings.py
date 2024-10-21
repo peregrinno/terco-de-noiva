@@ -30,11 +30,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False if os.getenv('HOSTED') != 'local' else True
 
 if os.getenv('HOSTED') != 'local':
-    ALLOWED_HOSTS = ['https://tercodenoiva.codewave.app']
+    ALLOWED_HOSTS = ['https://tdn-railway.up.railway.app','tdn-railway.up.railway.app','https://tercodenoiva.codewave.app','tercodenoiva.codewave.app']
 else:
     ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1','https://tercodenoiva.codewave.app']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1','https://tdn-railway.up.railway.app','https://tercodenoiva.codewave.app']
 
 
 # Application definition
