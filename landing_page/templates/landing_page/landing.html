@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Terço de noiva</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      href="{% static 'img/favicon.ico' %}"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/components/btn-messages.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/components/btn-simple.css' %}"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  </head>
+  <body>
+    <!-- Spinner -->
+    <div id="spinner" class="spinner-container">
+      <div class="spinner"></div>
+    </div>
+    <header class="header">
+      <video autoplay loop muted playsinline id="background-video">
+        <source
+          src="{% static 'videos/tdn-video-header.mp4' %}"
+          type="video/mp4"
+        />
+        Seu navegador não suporta a reprodução de vídeos.
+      </video>
+      <img
+        src="{% static 'img/terco-de-noiva.svg' %}"
+        alt="Logomarca Terco de Noiva"
+        width="250px"
+      />
+      <h1 class="header-title" id="animated-heading">
+        Um momento único na sua vida, merece uma peça única.
+      </h1>
+      <p class="sub-title" id="animated-paragraph">
+        O terço da noiva, acompanha ela da entrada ao altar e é sinal de
+        devoção, proteção e amor durante todo o matrimônio.
+      </p>
+      {% include "components/btn-simple.html" %}
+    </header>
+    <section class="about" id="about">
+      <h2>Personalização Exclusiva e Entrega em Todo o Brasil</h2>
+      <p>
+        Em cada casamento, o terço é um símbolo de fé, devoção e amor. Nós
+        oferecemos terços de noiva personalizados, criados exclusivamente para
+        você, refletindo a singularidade desse momento tão especial. Entregamos
+        para todo o Brasil, garantindo que você receba sua peça única com todo o
+        carinho e atenção.
+      </p>
+    </section>
+
+    <section class="gallery">
+      <h2>Nossos Terços</h2>
+      <div class="gallery-container">
+        <div class="gallery-item">
+          <img
+            src="{% static 'img/terco1.jpg' %}"
+            alt="Terço de Noiva Clássico"
+          />
+          <p>Cravejados</p>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="{% static 'img/terco2.jpeg' %}"
+            alt="Terço de Noiva Moderno"
+          />
+          <p>Personalizados</p>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="{% static 'img/terco3.jpeg' %}"
+            alt="Terço de Noiva Personalizado"
+          />
+          <p>Memoráveis</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <h2>Por Que Escolher Nossos Terços?</h2>
+      <ul>
+        <li>
+          <strong>Exclusividade:</strong> Cada terço é feito sob medida, de
+          acordo com seus desejos e necessidades.
+        </li>
+        <li>
+          <strong>Alta Qualidade:</strong> Utilizamos os melhores materiais para
+          garantir beleza e durabilidade.
+        </li>
+        <li>
+          <strong>Entrega Rápida:</strong> Enviamos para todo o Brasil com
+          segurança e rapidez.
+        </li>
+        <li>
+          <strong>Atendimento Personalizado:</strong> Acompanhamos de perto cada
+          detalhe da sua compra.
+        </li>
+      </ul>
+    </section>
+
+    <section class="cta">
+      <h2>Garanta o Seu Terço Exclusivo Hoje Mesmo!</h2>
+      <p>
+        Entre em contato conosco e personalize o seu terço de noiva. Estamos
+        prontos para tornar o seu casamento ainda mais especial.
+      </p>
+      <a
+        href="https://api.whatsapp.com/send?phone=5581973229310&text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20ter%C3%A7os%20de%20noiva!"
+        class="cta-button"
+        >Fazer Meu Pedido</a
+      >
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Fale Conosco</h2>
+      <form id="contact-form">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required />
+
+        {% include "components/btn-send.html" %}
+      </form>
+    </section>
+
+    <footer class="footer">
+      <p>© 2024 Ateliê Terços de Noiva. Todos os direitos reservados.</p>
+      <p>Entregamos para todo o Brasil.</p>
+    </footer>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Evita o envio padrão do formulário
+
+          // Captura o valor do campo Nome
+          var name = document.getElementById("name").value;
+
+          // Concatena o nome no link do WhatsApp
+          var whatsappLink =
+            "https://api.whatsapp.com/send?phone=5581973229310&text=Ol%C3%A1!%20" +
+            encodeURIComponent(name) +
+            "%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20ter%C3%A7os%20de%20noiva!";
+
+          // Redireciona para o link do WhatsApp
+          window.location.href = whatsappLink;
+        });
+
+      anime({
+        targets: "#animated-heading",
+        translateY: [50, 0], // Move de 50px abaixo para a posição original
+        opacity: [0, 1], // Começa transparente e se torna visível
+        easing: "easeOutExpo", // Animação suave de desaceleração
+        duration: 1000, // Duração da animação (1 segundo)
+        delay: 500, // Atraso para iniciar a animação (meio segundo)
+      });
+
+      // Animação do <p>
+      anime({
+        targets: "#animated-paragraph",
+        translateX: [-100, 0],
+        opacity: [0, 1],
+        easing: "easeOutExpo",
+        duration: 1200,
+        delay: 1000,
+      });
+
+      var spinner = document.getElementById("spinner");
+      spinner.style.display = "none";
+    });
+  </script>
+</html>
